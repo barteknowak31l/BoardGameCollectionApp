@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".GameListActivity">
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingTop="20dp"
+        android:text="Lista posiadanych gier"
+        android:textAlignment="center"
+
+        android:textSize="30sp" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/sortBy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="15dp"
+            android:text="Sortuj wg:"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/sortByTitle"
+            android:layout_width="93dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:onClick="sortOnClick"
+            android:text="Nazwa" />
+
+        <Button
+            android:id="@+id/sortByYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:onClick="sortOnClick"
+            android:text="Rok wydania" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pokaż od:" />
+
+            <EditText
+                android:id="@+id/editTextNumberDecimal2"
+                android:layout_width="72dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:text="1"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+    </TableRow>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="-">
+
+        <TableLayout
+            android:id="@+id/tblLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="?android:attr/dividerHorizontal"
+            android:showDividers="middle">
+
+
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

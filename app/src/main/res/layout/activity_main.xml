@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/nickDisplay">
+
+
+        <TextView
+            android:id="@+id/gamesOwned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:text="Posiadane gry"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/expansionsOwned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Posiadane dodatki"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/lastSynch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Ostatnia synchronizacja"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/nickDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Witaj ____!"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/gameListButton"
+        android:layout_width="146dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:onClick="gameListOnClick"
+        android:text="Lista gier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+
+    <Button
+        android:id="@+id/expansionListButton"
+        android:layout_width="146dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
+        android:text="Lista dodatków"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <Button
+        android:id="@+id/syncButton"
+        android:layout_width="146dp"
+        android:layout_height="158dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:onClick="synchOnClick"
+        android:text="Synchronizuj"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gameListButton" />
+
+    <Button
+        android:id="@+id/clearDataButton"
+        android:layout_width="146dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:onClick="deleteAppDataDialog"
+        android:text="Wyczyść dane"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/expansionListButton" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

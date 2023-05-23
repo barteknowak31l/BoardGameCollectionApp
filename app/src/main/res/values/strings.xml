@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BoardGameCollection</string>
+    <string name="tag_id">39090</string>
+    <string name="temp_images_dir">temp_images</string>
+    <string name="temp_image">temp_image.jpg</string>
+    <string name="authorities">com.example.fileprovider2</string>
+</resources>
