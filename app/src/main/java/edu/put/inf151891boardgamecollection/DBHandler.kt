@@ -4,7 +4,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import java.io.File
 import java.io.Serializable
 
@@ -44,9 +43,6 @@ class DBHandler(context: Context, name: String?, factory: SQLiteDatabase.CursorF
 
     fun createEmptyTable()
     {
-
-        Log.i("sql","TWORZE NOWY TABLE!!")
-
         this.writableDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE)
 
         val CREATE_TABLE = ("CREATE TABLE "+ TABLE + "(" + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_TITLE +" TEXT," + COLUMN_YEAR_PUB + " INTEGER," + COLUMN_RANK_POS + " INTEGER," +

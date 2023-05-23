@@ -97,7 +97,7 @@ class GameListActivity : AppCompatActivity() {
 
     fun selectGames(sortId: Int)
     {
-        Toast.makeText(applicationContext, "Rozpoczynam sortowanie, to może chwilę potrwać:", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, "Rozpoczynam sortowanie, to może chwilę potrwać:", Toast.LENGTH_SHORT).show()
         disableButton(sortByNameButton)
         disableButton(sortByYearButton)
         currentFirstToShowInputField.isEnabled = false
@@ -117,21 +117,9 @@ class GameListActivity : AppCompatActivity() {
                 }
             }
 
-            var i = 1
-            for (record in lGameData!!) {
-                Log.i("datacheck", "--------------WPIS NR $i---------------------")
-                Log.i("datacheck", "ID: " + record.id)
-                Log.i("datacheck", "TITLE: " + record.title)
-                Log.i("datacheck", "YEAR_PUB: " + record.year_pub)
-                Log.i("datacheck", "RANK_POS: " + record.rank_pos)
-                Log.i("datacheck", "PIC: " + record.pic)
-                Log.i("datacheck", "EXP: " + record.expansion)
-                i++
-            }
-
             withContext(Dispatchers.Main) {
                 displayList()
-                Toast.makeText(applicationContext, "Sortowanie zakończone", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Sortowanie zakończone", Toast.LENGTH_SHORT).show()
                 enableButton(sortByNameButton)
                 enableButton(sortByYearButton)
                 currentFirstToShowInputField.isEnabled = true
@@ -150,18 +138,13 @@ class GameListActivity : AppCompatActivity() {
         val bottomRowMargin = 0
 
         var first = currentFirstToShow
-        if(currentFirstToShow > 0)
-        {
-            first--
-        }
-
         var howMuch = currentFirstToShow + howMuchToShow
         if (howMuch > lGameData.size -1) {
             howMuch = lGameData.size - 1
             first =  lGameData.size - 1 - howMuchToShow
         }
-
         if(first <0) first = 0
+
         //NAGŁOWEK
         val headNO = TextView(this)
         headNO.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
@@ -243,7 +226,7 @@ class GameListActivity : AppCompatActivity() {
 
                     } catch (e: Exception) {
                         thumbnail.setImageDrawable(resources.getDrawable(R.drawable.placeholder))
-                        Log.i("image", Log.getStackTraceString(e))
+                        Log.i("err", Log.getStackTraceString(e))
                         }
                 }
 
@@ -305,7 +288,7 @@ class GameListActivity : AppCompatActivity() {
             button.isClickable = true
         }
         catch (e:java.lang.Exception){
-            Log.i("lol",Log.getStackTraceString(e))
+            Log.i("err",Log.getStackTraceString(e))
         }
     }
 

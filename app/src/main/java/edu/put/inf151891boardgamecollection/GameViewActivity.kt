@@ -148,7 +148,6 @@ class GameViewActivity : AppCompatActivity() {
 
 
         cameraButton.setOnClickListener{
-            Log.i("camera","onclick")
             takePictureLauncher.launch(tempImageUri)}
 
         buildImageList()
@@ -179,7 +178,7 @@ class GameViewActivity : AppCompatActivity() {
                     } catch (e: java.lang.Exception) {
                         withContext(Dispatchers.Main) {
                             gameImageView.setImageDrawable(resources.getDrawable(R.drawable.placeholderbig))
-                            Log.i("", Log.getStackTraceString(e))
+                            Log.i("err", Log.getStackTraceString(e))
                         }
                     }
 
@@ -190,11 +189,11 @@ class GameViewActivity : AppCompatActivity() {
         }
         catch (e: NullPointerException)
         {
-            Log.i("",Log.getStackTraceString(e))
+            Log.i("err",Log.getStackTraceString(e))
         }
         catch (e: java.lang.Exception)
         {
-            Log.i("",Log.getStackTraceString(e))
+            Log.i("err",Log.getStackTraceString(e))
         }
 
 
@@ -207,9 +206,7 @@ class GameViewActivity : AppCompatActivity() {
         imageTable.removeAllViews()
         val gameData = dbHandler.findGameByID(itemId)
         val names = gameData?.img_names
-        if (gameData != null) {
-            Log.i("Uri", "uri: ${gameData.img_names}")
-        }
+
         try{
             val names_split = names?.split(",")
             if( names_split != null)
@@ -219,7 +216,6 @@ class GameViewActivity : AppCompatActivity() {
 
                     try
                     {
-                        Log.i("error",name)
                         val path = Environment.getExternalStorageDirectory().toString() +"/Pictures/"+ name +".jpg"
                         val file = File(path)
                         val urii = Uri.fromFile(file)
@@ -227,7 +223,7 @@ class GameViewActivity : AppCompatActivity() {
                     }
                     catch(e:java.lang.Exception)
                     {
-                        Log.i("error",Log.getStackTraceString(e))
+                        Log.i("err",Log.getStackTraceString(e))
                     }
                 }
             }
@@ -237,11 +233,11 @@ class GameViewActivity : AppCompatActivity() {
         }
         catch (e: NullPointerException)
         {
-            Log.e("e",Log.getStackTraceString(e))
+            Log.e("err",Log.getStackTraceString(e))
         }
         catch (e: Exception)
         {
-            Log.e("e",Log.getStackTraceString(e))
+            Log.e("err",Log.getStackTraceString(e))
         }
 
     }
@@ -288,9 +284,6 @@ class GameViewActivity : AppCompatActivity() {
         imageTable.removeAllViews()
         val gameData = dbHandler.findGameByID(itemId)
         val names = gameData?.img_names
-        if (gameData != null) {
-            Log.i("Uri", "uri: ${gameData.img_names}")
-        }
 
         try{
             val names_split = names?.split(",")
@@ -305,14 +298,13 @@ class GameViewActivity : AppCompatActivity() {
                         val file = File(path)
                         if(file.exists()) {
                             file.delete()
-                            Log.i("usuwanie","udalo sie usunac plik")
                             gameData.img_names = ""
                             dbHandler.updateNamesString(gameData)
                         }
                     }
                     catch(e:java.lang.Exception)
                     {
-                        Log.i("error",Log.getStackTraceString(e))
+                        Log.i("err",Log.getStackTraceString(e))
                     }
                 }
             }
@@ -320,11 +312,11 @@ class GameViewActivity : AppCompatActivity() {
         }
         catch (e: NullPointerException)
         {
-            Log.e("error",Log.getStackTraceString(e))
+            Log.e("err",Log.getStackTraceString(e))
         }
         catch (e: Exception)
         {
-            Log.e("error",Log.getStackTraceString(e))
+            Log.e("err",Log.getStackTraceString(e))
         }
     }
 
@@ -342,7 +334,6 @@ class GameViewActivity : AppCompatActivity() {
         }
         else
         {
-            Log.i("err","idzie")
             imageCollection = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         }
 
@@ -390,7 +381,6 @@ class GameViewActivity : AppCompatActivity() {
             if (gameData != null) {
                 gameData.img_names = name_str
                 dbHandler.updateNamesString(gameData)
-                Log.i("Uri","dodano uri do ${gameData.title}")
             }
 
 

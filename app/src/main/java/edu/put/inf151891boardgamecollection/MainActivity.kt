@@ -152,7 +152,6 @@ class MainActivity : AppCompatActivity() {
     private val WRITE_REQUEST_CODE = 112
     private fun setupPermissions()
     {
-        Log.i("permiss","setupPermission")
         val permission = ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE)
         if(permission != PackageManager.PERMISSION_GRANTED)
         {
@@ -161,8 +160,6 @@ class MainActivity : AppCompatActivity() {
 
         val permission2 = ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
-
-        Log.i("prm",permission2.toString())
 
         if(permission2 != PackageManager.PERMISSION_GRANTED)
         {
@@ -181,8 +178,6 @@ class MainActivity : AppCompatActivity() {
             WRITE_REQUEST_CODE -> requestPermissions( arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),code)
         }
 
-         Log.i("prm","request")
-        //ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),code)
     }
 
     override fun onRequestPermissionsResult( // ta funkcja chyba jest nie potrzebna
@@ -199,8 +194,6 @@ class MainActivity : AppCompatActivity() {
 
             WRITE_REQUEST_CODE -> {
                 if(grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED){
-                    Log.i("prm",ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        .toString())
                 }
             }
 
@@ -388,7 +381,7 @@ class MainActivity : AppCompatActivity() {
                     loadGameData(nickname)
                     expansionsOwned = dbHandler.selectAll(itemTypes.EXPANSION,"").size
                     setTextFields()
-                    Toast.makeText(applicationContext, "Synchronizacja dodatków zakończona\nZalogowano jako $nickname:", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Synchronizacja dodatków zakończona\nZalogowano jako $nickname:", Toast.LENGTH_SHORT).show()
 
                 }
 
@@ -400,7 +393,7 @@ class MainActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main)
                 {
 
-                    Toast.makeText(applicationContext, "Synchronizacja nie powiodłą się\nSpróbuj ponownie później:", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Synchronizacja nie powiodłą się\nSpróbuj ponownie później:", Toast.LENGTH_SHORT).show()
                     when(e){
                         is MalformedURLException ->
                             print("Malformed URL")
@@ -523,12 +516,12 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
             catch(e: IOException)
-            {            Log.i("loadGameData",Log.getStackTraceString(e))
+            {            Log.i("err",Log.getStackTraceString(e))
                  e.printStackTrace()
             }
             catch(e:Exception)
             {
-                           Log.i("loadGameData",Log.getStackTraceString(e))
+                           Log.i("err",Log.getStackTraceString(e))
                     e.printStackTrace()
             }
 
